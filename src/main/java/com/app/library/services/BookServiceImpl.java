@@ -47,4 +47,16 @@ public class BookServiceImpl implements BookService {
         book.borrow();
         repo.save(book);
     }
+
+    @Override
+    public void returnBook(UUID id) {
+        Book book = repo.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+        book.returnBook();
+        repo.save(book);
+    }
+
+    @Override
+    public void deleteBook(UUID id) {
+        repo.deleteById(id);
+    }
 }
