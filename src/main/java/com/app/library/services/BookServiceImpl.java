@@ -4,6 +4,8 @@ import com.app.library.entities.Book;
 import com.app.library.entities.EBook;
 import com.app.library.entities.PrintedBook;
 import com.app.library.infrastructure.BookRepository;
+
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -17,6 +19,11 @@ public class BookServiceImpl implements BookService {
 
     public BookServiceImpl(BookRepository repo) {
         this.repo = repo;
+    }
+
+    @Override
+    public List<Book> getBooks() {
+        return repo.findAll();
     }
 
     @Override
