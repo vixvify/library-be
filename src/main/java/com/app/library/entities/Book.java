@@ -22,6 +22,7 @@ public class Book {
     @GeneratedValue()
     private UUID id;
     private String title;
+    private String type;
     private boolean available;
     private Integer borrow_days;
     private LocalDateTime created_at;

@@ -10,6 +10,7 @@ public class EBook extends Book {
 
     public EBook(String title) {
         super(title);
+        setType("EBOOK");
         setBorrow_days(14);
     }
 

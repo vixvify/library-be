@@ -10,6 +10,7 @@ public class PrintedBook extends Book {
 
     public PrintedBook(String title) {
         super(title);
+        setType("PRINTED");
         setBorrow_days(21);
     }
 }

@@ -30,9 +30,9 @@ public class BookServiceImpl implements BookService {
     public void createBook(CreateBookRequest request) {
         Book book;
 
-        if (request.getType().equalsIgnoreCase("printed")) {
+        if (request.getType().equalsIgnoreCase("PRINTED")) {
             book = new PrintedBook(request.getTitle());
-        } else if (request.getType().equalsIgnoreCase("ebook")) {
+        } else if (request.getType().equalsIgnoreCase("EBOOK")) {
             book = new EBook(request.getTitle());
         } else {
             throw new IllegalArgumentException("Invalid book type");
