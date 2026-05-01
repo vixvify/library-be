@@ -13,4 +13,8 @@ public interface BookService {
     void createBook(CreateBookRequest request);
 
     void borrowBook(UUID id);
+
+    void returnBook(UUID id);
+    
+    void deleteBook(UUID id);
 }

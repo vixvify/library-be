@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.app.library.services.BookService;
@@ -41,6 +42,18 @@ public class BookController {
     @PutMapping("/books/borrow/{id}")
     public ApiResponse<Void> borrowBook(@PathVariable UUID id) {
         service.borrowBook(id);
+        return new ApiResponse<>(null);
+    }
+
+    @PutMapping("/books/return/{id}")
+    public ApiResponse<Void> returnBook(@PathVariable UUID id) {
+        service.returnBook(id);
+        return new ApiResponse<>(null);
+    }
+
+    @DeleteMapping("/books/{id}")
+    public ApiResponse<Void> deleteBook(@PathVariable UUID id) {
+        service.deleteBook(id);
         return new ApiResponse<>(null);
     }
 }

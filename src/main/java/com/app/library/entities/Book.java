@@ -41,4 +41,11 @@ public class Book {
         }
         this.available = false;
     }
+
+    public void returnBook() {
+        if (available) {
+            throw new RuntimeException("Book is not borrowed");
+        }
+        this.available = true;
+    }
 }
