@@ -3,6 +3,9 @@ package com.app.library.entities;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.app.library.exceptions.BookNotAvailableException;
+import com.app.library.exceptions.BookNotBorrowedException;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -38,14 +41,14 @@ public class Book {
 
     public void borrow() {
         if (!available) {
-            throw new RuntimeException("Book not available");
+            throw new BookNotAvailableException();
         }
         this.available = false;
     }
 
     public void returnBook() {
         if (available) {
-            throw new RuntimeException("Book is not borrowed");
+            throw new BookNotBorrowedException();
         }
         this.available = true;
     }

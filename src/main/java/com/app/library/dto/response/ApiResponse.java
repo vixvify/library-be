@@ -9,9 +9,15 @@ public class ApiResponse<T> {
     private int status;
     private String statusCode;
 
-    public ApiResponse(T data) {
+    public ApiResponse(T data, int status, String statusCode) {
         this.data = data;
-        this.status = 200;
-        this.statusCode = "SUCCESS";
+        this.status = status;
+        this.statusCode = statusCode;
+    }
+
+    public ApiResponse(String error, int status, String statusCode) {
+        this.error = error;
+        this.status = status;
+        this.statusCode = statusCode;
     }
 }
