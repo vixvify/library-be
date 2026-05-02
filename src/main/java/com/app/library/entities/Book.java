@@ -20,12 +20,11 @@ import jakarta.persistence.InheritanceType;
 @Entity
 @Table(name = "Book")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Book {
+public abstract class Book {
     @Id
     @GeneratedValue()
     private UUID id;
     private String title;
-    private String type;
     private boolean available;
     private Integer borrow_days;
     private LocalDateTime created_at;
@@ -52,4 +51,7 @@ public class Book {
         }
         this.available = true;
     }
+
+    public abstract String getType();
+
 }

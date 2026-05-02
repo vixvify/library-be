@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.app.library.services.BookService;
 import com.app.library.dto.request.CreateBookRequest;
-import com.app.library.entities.Book;
+import com.app.library.dto.response.BookResponse;
 import com.app.library.dto.response.ApiResponse;
 
 import jakarta.validation.Valid;
@@ -33,7 +33,7 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public ResponseEntity<ApiResponse<List<Book>>> getBooks() {
+    public ResponseEntity<ApiResponse<List<BookResponse>>> getBooks() {
         return ResponseEntity.ok(new ApiResponse<>(service.getBooks(), 200, "SUCCESS"));
     }
 

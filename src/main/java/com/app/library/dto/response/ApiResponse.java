@@ -6,8 +6,8 @@ import lombok.Getter;
 public class ApiResponse<T> {
     private T data;
     private String error;
-    private int status;
-    private String statusCode;
+    private final int status;
+    private final String statusCode;
 
     public ApiResponse(T data, int status, String statusCode) {
         this.data = data;
