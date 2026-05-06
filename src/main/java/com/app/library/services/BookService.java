@@ -16,5 +16,7 @@ public interface BookService {
 
     void returnBook(UUID id);
 
+    void updateBook(UUID id, UpdateBookRequest request);
+
     void deleteBook(UUID id);
 }

@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.app.library.exceptions.BookNotAvailableException;
 import com.app.library.exceptions.BookNotBorrowedException;
 
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,23 +17,26 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "Book")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "book_type")
 public abstract class Book {
     @Id
     @GeneratedValue()
     private UUID id;
+
+    @Setter
     private String title;
+
     private boolean available;
     private Integer borrow_days;
     private LocalDateTime created_at;
 
-    public Book() {
+    protected Book() {
     }
 
-    public Book(String title, Integer borrow_days) {
+    protected Book(String title, Integer borrow_days) {
         this.title = title;
         this.borrow_days = borrow_days;
         this.available = true;

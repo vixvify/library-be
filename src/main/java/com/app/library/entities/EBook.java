@@ -1,8 +1,10 @@
 package com.app.library.entities;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("EBOOK")
 public class EBook extends Book {
 
     public EBook() {

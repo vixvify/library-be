@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.app.library.services.BookService;
 import com.app.library.dto.request.CreateBookRequest;
+import com.app.library.dto.request.UpdateBookRequest;
 import com.app.library.dto.response.BookResponse;
 import com.app.library.dto.response.ApiResponse;
 
@@ -55,9 +57,16 @@ public class BookController {
         return ResponseEntity.ok(new ApiResponse<>(null, 200, "SUCCESS"));
     }
 
+    @PatchMapping("/books/{id}")
+    public ResponseEntity<ApiResponse<Void>> updateBook(@PathVariable UUID id,
+            @Valid @RequestBody UpdateBookRequest request) {
+        service.updateBook(id, request);
+        return ResponseEntity.ok(new ApiResponse<>(null, 200, "SUCCESS"));
+    }
+
     @DeleteMapping("/books/{id}")
-    public ResponseEntity<Void> deleteBook(@PathVariable UUID id) {
+    public ResponseEntity<ApiResponse<Void>> deleteBook(@PathVariable UUID id) {
         service.deleteBook(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new ApiResponse<>(null, 200, "SUCCESS"));
     }
 }

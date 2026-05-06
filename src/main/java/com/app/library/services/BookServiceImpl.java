@@ -13,6 +13,7 @@ import com.app.library.exceptions.BookNotFoundException;
 import com.app.library.infrastructure.BookRepository;
 import com.app.library.dto.response.BookResponse;
 import com.app.library.mapper.BookMapper;
+import com.app.library.dto.request.UpdateBookRequest;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -46,6 +47,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void borrowBook(UUID id) {
         Book book = repo.findById(id).orElseThrow(BookNotFoundException::new);
+
         book.borrow();
         repo.save(book);
     }
@@ -54,6 +56,13 @@ public class BookServiceImpl implements BookService {
     public void returnBook(UUID id) {
         Book book = repo.findById(id).orElseThrow(BookNotFoundException::new);
         book.returnBook();
+        repo.save(book);
+    }
+
+    @Override
+    public void updateBook(UUID id, UpdateBookRequest request) {
+        Book book = repo.findById(id).orElseThrow(BookNotFoundException::new);
+        book.setTitle(request.getTitle());
         repo.save(book);
     }
 
