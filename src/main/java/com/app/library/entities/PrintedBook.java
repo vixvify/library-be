@@ -9,8 +9,7 @@ public class PrintedBook extends Book {
     }
 
     public PrintedBook(String title) {
-        super(title);
-        setBorrow_days(21);
+        super(title, 21);
     }
 
     @Override

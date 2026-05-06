@@ -32,8 +32,9 @@ public abstract class Book {
     public Book() {
     }
 
-    public Book(String title) {
+    public Book(String title, Integer borrow_days) {
         this.title = title;
+        this.borrow_days = borrow_days;
         this.available = true;
         this.created_at = LocalDateTime.now();
     }
