@@ -4,13 +4,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import com.app.library.entities.BookType;
+
 @Data
 public class CreateBookRequest {
-
-    public enum BookType {
-        PRINTED,
-        EBOOK
-    }
 
     @NotBlank(message = "Title is required")
     private String title;

@@ -13,8 +13,8 @@ public class BookMapper {
         res.setTitle(book.getTitle());
         res.setType(book.getType());
         res.setAvailable(book.isAvailable());
-        res.setBorrow_days(book.getBorrow_days());
-        res.setCreated_at(book.getCreated_at());
+        res.setBorrowDays(book.getBorrowDays());
+        res.setCreatedAt(book.getCreatedAt());
 
         return res;
     }

@@ -7,14 +7,15 @@ import com.app.library.exceptions.BookNotAvailableException;
 import com.app.library.exceptions.BookNotBorrowedException;
 
 import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
 
 @Getter
 @Entity
@@ -30,17 +31,21 @@ public abstract class Book {
     private String title;
 
     private boolean available;
-    private Integer borrow_days;
-    private LocalDateTime created_at;
+
+    @Column(name = "borrow_days")
+    private Integer borrowDays;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     protected Book() {
     }
 
-    protected Book(String title, Integer borrow_days) {
+    protected Book(String title, Integer borrowDays) {
         this.title = title;
-        this.borrow_days = borrow_days;
+        this.borrowDays = borrowDays;
         this.available = true;
-        this.created_at = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     public void borrow() {

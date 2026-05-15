@@ -6,14 +6,13 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.app.library.dto.request.CreateBookRequest;
+import com.app.library.dto.request.UpdateBookRequest;
 import com.app.library.entities.Book;
-import com.app.library.entities.EBook;
-import com.app.library.entities.PrintedBook;
+import com.app.library.entities.BookFactory;
 import com.app.library.exceptions.BookNotFoundException;
 import com.app.library.infrastructure.BookRepository;
 import com.app.library.dto.response.BookResponse;
 import com.app.library.mapper.BookMapper;
-import com.app.library.dto.request.UpdateBookRequest;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -33,14 +32,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void createBook(CreateBookRequest request) {
-        Book book;
-
-        switch (request.getType()) {
-            case PRINTED -> book = new PrintedBook(request.getTitle());
-            case EBOOK -> book = new EBook(request.getTitle());
-            default -> throw new IllegalArgumentException("Invalid type");
-        }
-
+        Book book = BookFactory.create(request.getTitle(), request.getType());
         repo.save(book);
     }
 
