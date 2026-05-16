@@ -1,4 +1,4 @@
-package com.app.library.exceptions;
+package com.app.library.domain.exceptions;
 
 public class BookNotBorrowedException extends RuntimeException {
     public BookNotBorrowedException() {

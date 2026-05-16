@@ -1,4 +1,4 @@
-package com.app.library.entities;
+package com.app.library.domain.models;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;

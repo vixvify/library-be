@@ -1,4 +1,4 @@
-package com.app.library.controllers;
+package com.app.library.presentation.controllers;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.app.library.presentation.dto.request.CreateBookRequest;
+import com.app.library.presentation.dto.request.UpdateBookRequest;
+import com.app.library.presentation.dto.response.ApiResponse;
+import com.app.library.presentation.dto.response.BookResponse;
 import com.app.library.services.BookService;
-import com.app.library.dto.request.CreateBookRequest;
-import com.app.library.dto.request.UpdateBookRequest;
-import com.app.library.dto.response.BookResponse;
-import com.app.library.dto.response.ApiResponse;
 
 import jakarta.validation.Valid;
 

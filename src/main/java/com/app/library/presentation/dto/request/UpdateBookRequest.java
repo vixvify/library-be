@@ -1,4 +1,4 @@
-package com.app.library.dto.request;
+package com.app.library.presentation.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

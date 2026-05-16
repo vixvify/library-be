@@ -1,4 +1,4 @@
-package com.app.library.exceptions;
+package com.app.library.domain.exceptions;
 
 public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException() {

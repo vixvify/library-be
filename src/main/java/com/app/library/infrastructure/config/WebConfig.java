@@ -1,4 +1,4 @@
-package com.app.library.config;
+package com.app.library.infrastructure.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

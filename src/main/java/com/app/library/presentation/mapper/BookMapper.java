@@ -1,8 +1,9 @@
-package com.app.library.mapper;
+package com.app.library.presentation.mapper;
 
 import org.springframework.stereotype.Component;
-import com.app.library.dto.response.BookResponse;
-import com.app.library.entities.Book;
+
+import com.app.library.domain.models.Book;
+import com.app.library.presentation.dto.response.BookResponse;
 
 @Component
 public class BookMapper {

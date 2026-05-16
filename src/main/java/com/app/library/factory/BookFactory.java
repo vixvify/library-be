@@ -2,10 +2,10 @@ package com.app.library.factory;
 
 import java.util.Objects;
 
-import com.app.library.domain.BookType;
-import com.app.library.entities.Book;
-import com.app.library.entities.EBook;
-import com.app.library.entities.PrintedBook;
+import com.app.library.domain.enums.BookType;
+import com.app.library.domain.models.Book;
+import com.app.library.domain.models.EBook;
+import com.app.library.domain.models.PrintedBook;
 
 public final class BookFactory {
     private BookFactory() {

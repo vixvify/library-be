@@ -1,10 +1,10 @@
-package com.app.library.entities;
+package com.app.library.domain.models;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.app.library.exceptions.BookNotAvailableException;
-import com.app.library.exceptions.BookNotBorrowedException;
+import com.app.library.domain.exceptions.BookNotAvailableException;
+import com.app.library.domain.exceptions.BookNotBorrowedException;
 
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Column;

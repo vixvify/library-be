@@ -1,4 +1,4 @@
-package com.app.library.controllers;
+package com.app.library.presentation.controllers;
 
 import java.util.stream.Collectors;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.app.library.dto.response.ApiResponse;
-import com.app.library.exceptions.BookNotAvailableException;
-import com.app.library.exceptions.BookNotBorrowedException;
-import com.app.library.exceptions.BookNotFoundException;
+import com.app.library.domain.exceptions.BookNotAvailableException;
+import com.app.library.domain.exceptions.BookNotBorrowedException;
+import com.app.library.domain.exceptions.BookNotFoundException;
+import com.app.library.presentation.dto.response.ApiResponse;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {

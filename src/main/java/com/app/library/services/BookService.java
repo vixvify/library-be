@@ -3,21 +3,61 @@ package com.app.library.services;
 import java.util.List;
 import java.util.UUID;
 
-import com.app.library.dto.request.CreateBookRequest;
-import com.app.library.dto.request.UpdateBookRequest;
-import com.app.library.dto.response.BookResponse;
+import org.springframework.stereotype.Service;
 
-public interface BookService {
+import com.app.library.domain.exceptions.BookNotFoundException;
+import com.app.library.domain.models.Book;
+import com.app.library.domain.ports.BookRepositoryPort;
+import com.app.library.factory.BookFactory;
+import com.app.library.presentation.dto.request.CreateBookRequest;
+import com.app.library.presentation.dto.request.UpdateBookRequest;
+import com.app.library.presentation.dto.response.BookResponse;
+import com.app.library.presentation.mapper.BookMapper;
 
-    List<BookResponse> getBooks();
+@Service
+public class BookService {
 
-    void createBook(CreateBookRequest request);
+    private final BookRepositoryPort repo;
+    private final BookMapper bookMapper;
 
-    void borrowBook(UUID id);
+    public BookService(BookRepositoryPort repo, BookMapper bookMapper) {
+        this.repo = repo;
+        this.bookMapper = bookMapper;
+    }
 
-    void returnBook(UUID id);
+    public List<BookResponse> getBooks() {
+        return repo.findAll().stream().map(bookMapper::mapToResponse).toList();
+    }
 
-    void updateBook(UUID id, UpdateBookRequest request);
+    public void createBook(CreateBookRequest request) {
+        Book book = BookFactory.create(request.getTitle(), request.getType());
+        repo.save(book);
+    }
 
-    void deleteBook(UUID id);
+    public void borrowBook(UUID id) {
+        Book book = repo.findById(id).orElseThrow(BookNotFoundException::new);
+
+        book.borrow();
+        repo.save(book);
+    }
+
+    public void returnBook(UUID id) {
+        Book book = repo.findById(id).orElseThrow(BookNotFoundException::new);
+        book.returnBook();
+        repo.save(book);
+    }
+
+    public void updateBook(UUID id, UpdateBookRequest request) {
+        Book book = repo.findById(id).orElseThrow(BookNotFoundException::new);
+        book.setTitle(request.getTitle());
+        repo.save(book);
+    }
+
+    public void deleteBook(UUID id) {
+        if (!repo.existsById(id)) {
+            throw new BookNotFoundException();
+        }
+
+        repo.deleteById(id);
+    }
 }

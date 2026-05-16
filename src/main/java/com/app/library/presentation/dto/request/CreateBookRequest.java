@@ -1,10 +1,10 @@
-package com.app.library.dto.request;
+package com.app.library.presentation.dto.request;
+
+import com.app.library.domain.enums.BookType;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import com.app.library.domain.BookType;
 
 @Data
 public class CreateBookRequest {
